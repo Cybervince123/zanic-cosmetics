@@ -1,0 +1,67 @@
+import Image from "next/image";
+import { LeafIcon, SparkleIcon, FlaskIcon } from "@phosphor-icons/react/ssr";
+import { Container } from "@/components/site/container";
+import { Reveal } from "@/components/motion/reveal";
+import { themedImage } from "@/lib/images";
+
+const FEATURES = [
+  { icon: LeafIcon, label: "Clean Ingredients" },
+  { icon: SparkleIcon, label: "Visible Results" },
+  { icon: FlaskIcon, label: "Advanced Skincare" },
+];
+
+// 4:5 portrait — the site-wide ratio for content photography (see product-card.tsx).
+const IMAGE_FEATURES = [
+  { image: themedImage("spa,facial", 640, 800, 1), title: "Clean Ingredients", credit: "Zanic Cosmetics" },
+  { image: themedImage("skincare,woman", 640, 800, 1), title: "Visible Results", credit: "Zanic Cosmetics" },
+  { image: themedImage("cosmetics,jar", 640, 800, 1), title: "Advanced Skincare", credit: "Zanic Cosmetics" },
+];
+
+export function IntroFeatures() {
+  return (
+    <section className="py-16 sm:py-24">
+      <Container>
+        <Reveal className="grid gap-6 lg:grid-cols-12">
+          <p className="text-sm text-ink-faint lg:col-span-3">02</p>
+          <p className="text-xl leading-snug text-ink sm:text-2xl lg:col-span-9 lg:text-3xl">
+            We craft science-backed beauty using carefully selected ingredients to{" "}
+            <span className="text-ink-muted">
+              deliver effective, high-performance results without compromise on quality, safety, or skin health
+            </span>
+          </p>
+        </Reveal>
+
+        <Reveal stagger className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-6">
+          <ul className="divide-y divide-line lg:col-span-3">
+            {FEATURES.map(({ icon: Icon, label }) => (
+              <li key={label} className="flex items-center gap-3 py-4 first:pt-0">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-lime-soft text-lime-ink">
+                  <Icon className="size-4" weight="duotone" />
+                </span>
+                <span className="text-sm font-medium text-ink sm:text-base">{label}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:col-span-9">
+            {IMAGE_FEATURES.map(({ image, title, credit }) => (
+              <div key={title}>
+                <div className="relative aspect-[4/5] overflow-hidden rounded-(--radius-card)">
+                  <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    sizes="(min-width: 1024px) 260px, 30vw"
+                    className="photo-grade object-cover"
+                  />
+                </div>
+                <p className="mt-3 text-xs font-medium leading-tight text-ink sm:text-sm">{title}</p>
+                <p className="text-xs leading-tight text-ink-faint">{credit}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </Container>
+    </section>
+  );
+}
