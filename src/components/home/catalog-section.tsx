@@ -2,130 +2,98 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { useGSAP } from "@gsap/react";
 import { Container } from "@/components/site/container";
-import { ArrowBadge } from "@/components/ui/arrow-badge";
 import { ProductCard } from "@/components/home/product-card";
 import { Reveal } from "@/components/motion/reveal";
-import { CATEGORIES, PRODUCTS } from "@/lib/products";
-import { themedImage } from "@/lib/images";
+import { CATEGORIES, CATEGORY_DETAILS, PRODUCTS, type Category } from "@/lib/products";
+import { gsap } from "@/lib/gsap";
 import { cn } from "@/lib/utils";
 
 export function CatalogSection() {
-  const [category, setCategory] = useState(CATEGORIES[0]);
-  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [category, setCategory] = useState<Category>(CATEGORIES[0]);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const detail = CATEGORY_DETAILS[category];
+  const visibleProducts = PRODUCTS.filter((product) => product.category === category);
 
-  const scrollBy = (dir: 1 | -1) => {
-    scrollerRef.current?.scrollBy({ left: dir * 300, behavior: "smooth" });
-  };
+  useGSAP(
+    () => {
+      if (!contentRef.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      gsap.fromTo(
+        contentRef.current.querySelectorAll("[data-category-content]"),
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: "power3.out" },
+      );
+    },
+    { scope: contentRef, dependencies: [category] },
+  );
 
   return (
-    <section className="py-16 sm:py-24">
+    <section id="products" className="py-16 sm:py-24">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-8">
-          <Reveal className="flex flex-col">
-            <h2 className="text-h1">Refresh Your Skin And Renew Your Natural Glow</h2>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {CATEGORIES.map((c) => (
-                <button
-                  key={c}
-                  type="button"
-                  onClick={() => setCategory(c)}
-                  className={cn(
-                    "rounded-(--radius-pill) border px-4 py-2 text-sm font-medium transition-colors",
-                    c === category
-                      ? "border-surface bg-surface text-ink shadow-sm"
-                      : "border-line text-ink-muted hover:border-ink/30 hover:text-ink",
-                  )}
-                >
-                  {c}
-                </button>
-              ))}
-            </div>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-(--radius-card)">
-                <Image
-                  src={themedImage("skincare,bottle", 640, 800, 1)}
-                  alt="Skincare model applying formula"
-                  fill
-                  sizes="(min-width: 1024px) 320px, 45vw"
-                  className="photo-grade object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                <div className="absolute inset-x-4 bottom-4">
-                  <p className="text-sm font-medium leading-snug text-white">
-                    Only 15 Products
-                    <br />
-                    Left This Month
-                  </p>
-                  <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-white/30">
-                    <div className="h-full w-3/5 rounded-full bg-lime" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-4">
-                <div>
-                  <h3 className="text-lg font-medium text-ink sm:text-xl">Skincare Serum</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                    Lightweight formula delivering deep hydration while enhancing your skin&rsquo;s natural, healthy
-                    glow
-                  </p>
-                </div>
-                <div className="relative aspect-square overflow-hidden rounded-(--radius-card)">
-                  <Image
-                    src={themedImage("skincare,serum", 480, 480, 2)}
-                    alt="Serum dropper applied to skin"
-                    fill
-                    sizes="(min-width: 1024px) 240px, 45vw"
-                    className="photo-grade object-cover"
-                  />
-                  <ArrowBadge className="absolute inset-0 m-auto" />
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal className="relative hidden aspect-[4/5] overflow-hidden rounded-(--radius-card) lg:block">
-            <Image
-              src={themedImage("dropper", 640, 800, 1)}
-              alt="Close-up detail of skincare application"
-              fill
-              sizes="500px"
-              className="photo-grade object-cover"
-            />
-          </Reveal>
-        </div>
-
-        <Reveal className="mt-10 flex items-center justify-between">
-          <p className="text-sm text-ink-faint">Best sellers</p>
-          <div className="flex gap-2">
-            <button
-              type="button"
-              aria-label="Previous products"
-              onClick={() => scrollBy(-1)}
-              className="flex size-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
-            >
-              <CaretLeftIcon className="size-4" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next products"
-              onClick={() => scrollBy(1)}
-              className="flex size-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
-            >
-              <CaretRightIcon className="size-4" />
-            </button>
+        <Reveal className="grid gap-6 border-b border-line pb-10 lg:grid-cols-12">
+          <p className="text-sm uppercase tracking-[0.18em] text-ink-faint lg:col-span-3">Product range</p>
+          <div className="lg:col-span-9">
+            <h2 className="text-h1">The products your customers already ask for</h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted">
+              Shop for personal use or build a reliable shelf for your store, salon, spa or online business.
+            </p>
           </div>
         </Reveal>
 
-        <div ref={scrollerRef} className="mt-6 flex snap-x gap-4 overflow-x-auto pb-2 [scrollbar-width:none]">
-          {PRODUCTS.slice(0, 3).map((product) => (
-            <div key={product.slug} className="w-[260px] shrink-0 snap-start sm:w-[280px]">
-              <ProductCard product={product} />
-            </div>
+        <div className="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter products by category">
+          {CATEGORIES.map((item) => (
+            <button
+              key={item}
+              type="button"
+              aria-pressed={item === category}
+              onClick={() => setCategory(item)}
+              className={cn(
+                "rounded-(--radius-pill) border px-4 py-2 text-sm font-medium transition-[color,background-color,border-color,transform] duration-300 hover:-translate-y-0.5",
+                item === category
+                  ? "border-ink bg-ink text-on-dark shadow-sm"
+                  : "border-line bg-transparent text-ink-muted hover:border-lime-deep hover:text-ink",
+              )}
+            >
+              {item}
+            </button>
           ))}
+        </div>
+
+        <div ref={contentRef} className="mt-8 grid gap-5 lg:grid-cols-12">
+          <div
+            data-category-content
+            className="relative min-h-[420px] overflow-hidden rounded-(--radius-card) bg-dark lg:col-span-7"
+          >
+            <Image
+              key={detail.image}
+              src={detail.image}
+              alt={detail.title}
+              fill
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              className="photo-grade object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
+            <div className="absolute inset-x-6 bottom-6 sm:inset-x-8 sm:bottom-8">
+              <p className="text-xs uppercase tracking-[0.18em] text-lime">{detail.eyebrow}</p>
+              <h3 className="mt-3 max-w-md text-3xl text-white sm:text-4xl">{detail.title}</h3>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">{detail.description}</p>
+            </div>
+          </div>
+
+          <div data-category-content className="lg:col-span-5">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              {visibleProducts.map((product) => (
+                <ProductCard key={product.slug} product={product} />
+              ))}
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-ink-muted">
+              Looking for case quantities or a wider assortment? Request the current wholesale catalogue from our team.
+            </p>
+            <a href="https://wa.me/2349054593563" className="mt-5 inline-flex rounded-(--radius-pill) bg-lime px-5 py-3 text-sm font-semibold text-ink transition-transform duration-300 hover:-translate-y-0.5">
+              Request wholesale pricing
+            </a>
+          </div>
         </div>
       </Container>
     </section>

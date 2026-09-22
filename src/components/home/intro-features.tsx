@@ -1,32 +1,30 @@
 import Image from "next/image";
-import { LeafIcon, SparkleIcon, FlaskIcon } from "@phosphor-icons/react/ssr";
+import { ShieldCheckIcon, HandshakeIcon, TruckIcon } from "@phosphor-icons/react/ssr";
 import { Container } from "@/components/site/container";
 import { Reveal } from "@/components/motion/reveal";
-import { themedImage } from "@/lib/images";
 
 const FEATURES = [
-  { icon: LeafIcon, label: "Clean Ingredients" },
-  { icon: SparkleIcon, label: "Visible Results" },
-  { icon: FlaskIcon, label: "Advanced Skincare" },
+  { icon: ShieldCheckIcon, label: "Genuine products" },
+  { icon: HandshakeIcon, label: "Partner-first service" },
+  { icon: TruckIcon, label: "Reliable fulfilment" },
 ];
 
-// 4:5 portrait — the site-wide ratio for content photography (see product-card.tsx).
 const IMAGE_FEATURES = [
-  { image: themedImage("spa,facial", 640, 800, 1), title: "Clean Ingredients", credit: "Zanic Cosmetics" },
-  { image: themedImage("skincare,woman", 640, 800, 1), title: "Visible Results", credit: "Zanic Cosmetics" },
-  { image: themedImage("cosmetics,jar", 640, 800, 1), title: "Advanced Skincare", credit: "Zanic Cosmetics" },
+  { image: "/images/authenticity.png", title: "Authenticity", credit: "Responsible sourcing" },
+  { image: "/images/wholesale-partner.png", title: "Wholesale partnership", credit: "Built for business growth" },
+  { image: "/images/distribution.png", title: "Dependable supply", credit: "Nigeria-wide delivery" },
 ];
 
 export function IntroFeatures() {
   return (
-    <section className="py-16 sm:py-24">
+    <section id="about" className="py-16 sm:py-24">
       <Container>
         <Reveal className="grid gap-6 lg:grid-cols-12">
           <p className="text-sm text-ink-faint lg:col-span-3">02</p>
           <p className="text-xl leading-snug text-ink sm:text-2xl lg:col-span-9 lg:text-3xl">
-            We craft science-backed beauty using carefully selected ingredients to{" "}
+            Zanic makes quality skincare easier to access for retailers, resellers, beauty professionals and individual buyers.{" "}
             <span className="text-ink-muted">
-              deliver effective, high-performance results without compromise on quality, safety, or skin health
+              We source responsibly, price competitively and build the dependable supply relationships that growing businesses need.
             </span>
           </p>
         </Reveal>

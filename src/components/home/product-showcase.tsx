@@ -8,7 +8,6 @@ import { ArrowBadge } from "@/components/ui/arrow-badge";
 import { ProductCard } from "@/components/home/product-card";
 import { Reveal } from "@/components/motion/reveal";
 import { PRODUCTS } from "@/lib/products";
-import { themedImage } from "@/lib/images";
 
 export function ProductShowcase() {
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -18,10 +17,10 @@ export function ProductShowcase() {
     <section className="py-16 sm:py-24">
       <Container>
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-          <Reveal className="relative aspect-[4/5] overflow-hidden rounded-(--radius-card)">
+          <Reveal className="relative min-w-0 aspect-[4/5] overflow-hidden rounded-(--radius-card)">
             <Image
-              src={themedImage("citrus,fruit", 640, 800, 1)}
-              alt="Citrus Foam cleanser styled on a bathroom shelf"
+              src="/images/wholesale-partner.png"
+              alt="Zanic wholesale partner arranging skincare stock"
               fill
               sizes="(min-width: 1024px) 560px, 90vw"
               className="photo-grade object-cover"
@@ -29,19 +28,18 @@ export function ProductShowcase() {
             <ArrowBadge className="absolute right-4 top-4" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
             <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
-              <p className="text-lg font-medium text-white sm:text-xl">Citrus Foam</p>
+              <p className="text-lg font-medium text-white sm:text-xl">Built for beauty businesses</p>
               <p className="mt-1 max-w-xs text-sm leading-relaxed text-white/80">
-                A simple, effective formula for a smooth and balanced experience. Perfect for your everyday skincare
-                essentials.
+                Wholesale pricing, practical product information and reliable availability for retailers and resellers.
               </p>
             </div>
           </Reveal>
 
-          <Reveal>
-            <h2 className="text-h1">Clean, Clinically Proven, Consciously Crafted</h2>
+          <Reveal className="min-w-0">
+            <h2 className="text-h1">A supply partner, not another cosmetics shop</h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-muted sm:text-base">
-              Formulated with safe ingredients backed by science to support healthier skin, body, and well-being
-              with clean, trusted formulations.
+              We source around authenticity, quality, customer fit and real market demand. That helps our partners
+              stock with more confidence and serve their own customers better.
             </p>
 
             <div className="mt-6 flex gap-2">

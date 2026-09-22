@@ -1,11 +1,20 @@
+"use client";
+
 import Image from "next/image";
-import { PlusIcon } from "@phosphor-icons/react/ssr";
+import { PlusIcon } from "@phosphor-icons/react";
 import type { Product } from "@/lib/products";
 
 // 4:5 is the site-wide ratio for content photography (product shots, portraits,
 // feature imagery) — the only exceptions are square accent badges and the hero/CTA
 // banners, which step from 4:5 on mobile to 16:9 at sm+.
 export function ProductCard({ product }: { product: Product }) {
+  const addToCart = () => {
+    const current = Number(window.localStorage.getItem("zanic-cart-count") ?? "0");
+    const next = current + 1;
+    window.localStorage.setItem("zanic-cart-count", String(next));
+    window.dispatchEvent(new CustomEvent("zanic-cart-change", { detail: next }));
+  };
+
   return (
     <div className="group relative aspect-[4/5] shrink-0 overflow-hidden rounded-(--radius-card) bg-muted">
       <Image
@@ -17,13 +26,14 @@ export function ProductCard({ product }: { product: Product }) {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-black/0" />
       <span className="absolute left-4 top-4 rounded-(--radius-pill) bg-surface px-3 py-1.5 text-xs font-medium text-ink">
-        $ {product.price.toFixed(2)} USD
+        ₦{product.price.toLocaleString("en-NG")}
       </span>
       <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-2">
         <p className="text-sm font-medium text-white">{product.name}</p>
         <button
           type="button"
           aria-label={`Add ${product.name} to cart`}
+          onClick={addToCart}
           className="flex size-9 shrink-0 items-center justify-center rounded-full bg-white text-ink transition-colors hover:bg-lime"
         >
           <PlusIcon className="size-4" weight="bold" />

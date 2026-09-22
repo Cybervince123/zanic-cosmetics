@@ -4,24 +4,25 @@ import { Container } from "@/components/site/container";
 const LINK_COLUMNS = [
   [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/shop", label: "Shop" },
-    { href: "/contact", label: "Contact" },
+    { href: "/#about", label: "About" },
+    { href: "/#products", label: "Products" },
+    { href: "/#contact", label: "Contact" },
   ],
   [
-    { href: "/wholesale", label: "Wholesale" },
-    { href: "/distribution", label: "Distribution" },
-    { href: "/privacy", label: "Privacy Policy" },
+    { href: "https://wa.me/2349054593563", label: "Wholesale" },
+    { href: "/#about", label: "Distribution" },
+    { href: "tel:+2349054593563", label: "+234 905 459 3563" },
   ],
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-lime text-ink">
+    <footer id="contact" className="bg-lime text-ink">
       <Container className="pb-8 pt-16 sm:pt-24">
         <div className="grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-8">
-          <p className="text-[18vw] font-semibold leading-[0.85] tracking-tight sm:text-[13vw] lg:text-[9vw]">
-            Zanic<span className="text-ink/40">.</span>
+          <p className="text-[15vw] font-bold uppercase leading-[0.76] tracking-[-0.07em] sm:text-[11vw] lg:text-[7.5vw]">
+            <span className="block lg:inline">Zanic</span>{" "}
+            <span className="block lg:inline">Cosmetics<span className="text-ink/35">.</span></span>
           </p>
 
           <div className="grid grid-cols-2 gap-x-12 gap-y-2.5 sm:gap-x-16">

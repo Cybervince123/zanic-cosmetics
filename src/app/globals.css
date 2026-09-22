@@ -10,22 +10,22 @@
 /* ---------------------------------------------------------------------- */
 
 :root {
-  --color-bg: #f8f8f8;
-  --color-surface: #ffffff;
-  --color-ink: #0a0a0a;
-  --color-ink-muted: #6f6f6f;
-  --color-ink-faint: #9a9a9a;
-  --color-line: #e6e6e6;
-  --color-dark: #0a0a0a;
-  --color-on-dark: #f8f8f8;
+  --color-bg: #f7f2e9;
+  --color-surface: #fffaf1;
+  --color-ink: #11100e;
+  --color-ink-muted: #716a60;
+  --color-ink-faint: #9b9182;
+  --color-line: #ded3c2;
+  --color-dark: #11100e;
+  --color-on-dark: #fffaf1;
 
-  --color-lime: #9ce069;
-  --color-lime-deep: #7fc94a;
-  --color-lime-soft: #e1f4ce;
-  --color-lime-ink: #4c7a2e;
+  --color-lime: #d7ad5b;
+  --color-lime-deep: #a97822;
+  --color-lime-soft: #f1e2c1;
+  --color-lime-ink: #6e4a14;
 
   --radius-pill: 100px;
-  --radius-card: 24px;
+  --radius-card: 20px;
   --radius-badge: 12px;
   --radius-button: 100px;
 
@@ -95,6 +95,35 @@ body {
   font-weight: 400;
 }
 
+[data-theme="dark"] {
+  --color-bg: #0d0c0a;
+  --color-surface: #181613;
+  --color-ink: #f7f0e4;
+  --color-ink-muted: #b8ad9d;
+  --color-ink-faint: #81786d;
+  --color-line: #302c26;
+  --color-dark: #050505;
+  --color-on-dark: #fffaf1;
+  --color-lime: #d7ad55;
+  --color-lime-deep: #e3bf72;
+  --color-lime-soft: #2c2418;
+  --color-lime-ink: #f3d79a;
+}
+
+.theme-logo-on-light { display: block; }
+.theme-logo-on-dark { display: none; }
+[data-theme="dark"] .theme-logo-on-light { display: none; }
+[data-theme="dark"] .theme-logo-on-dark { display: block; }
+
+body,
+header,
+footer {
+  transition: background-color 0.45s ease, color 0.45s ease;
+}
+
+html { scroll-behavior: smooth; }
+::selection { background: var(--color-lime); color: var(--color-ink); }
+
 /* Type scale measured from the reference: 500-weight, tight (-0.03em to
    -0.04em) tracking on display/heading type; regular-weight, roomier body copy. */
 h1 {
@@ -139,7 +168,7 @@ h3 {
 /* Unifies photography sourced from different shoots into one warm, consistent
    grade — mirrors how a single commissioned photoshoot would read on-brand. */
 .photo-grade {
-  filter: saturate(103%) contrast(102%) brightness(99%);
+  filter: saturate(96%) contrast(103%) brightness(99%);
 }
 
 @layer base {
