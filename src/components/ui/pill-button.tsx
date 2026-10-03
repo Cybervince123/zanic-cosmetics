@@ -16,8 +16,8 @@ export function PillButton({ href, children, tone = "lime", className }: PillBut
       href={href}
       className={cn(
         "group inline-flex items-center gap-6 rounded-(--radius-pill) py-2 pl-6 pr-2 text-sm font-medium transition-transform duration-300 hover:scale-[1.02]",
-        tone === "lime" && "bg-lime text-ink",
-        tone === "dark" && "bg-ink text-on-dark",
+        tone === "lime" && "bg-lime text-black",
+        tone === "dark" && "bg-ink text-bg",
         tone === "light" && "bg-surface text-ink",
         className,
       )}
@@ -26,7 +26,7 @@ export function PillButton({ href, children, tone = "lime", className }: PillBut
       <span
         className={cn(
           "flex size-10 shrink-0 items-center justify-center rounded-full transition-colors",
-          tone === "lime" && "bg-ink text-lime",
+          tone === "lime" && "bg-black text-white",
           tone === "dark" && "bg-lime text-ink",
           tone === "light" && "bg-ink text-lime",
         )}

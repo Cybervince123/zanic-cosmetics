@@ -19,8 +19,8 @@ export function ProductShowcase() {
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
           <Reveal className="relative min-w-0 aspect-[4/5] overflow-hidden rounded-(--radius-card)">
             <Image
-              src="/images/wholesale-partner.png"
-              alt="Zanic wholesale partner arranging skincare stock"
+              src="/products/studio/skin-auras-ceramide-body-lotion.png"
+              alt="Skin Auras body lotion from the current Zanic product library"
               fill
               sizes="(min-width: 1024px) 560px, 90vw"
               className="photo-grade object-cover"
@@ -38,7 +38,7 @@ export function ProductShowcase() {
           <Reveal className="min-w-0">
             <h2 className="text-h1">A supply partner, not another cosmetics shop</h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-muted sm:text-base">
-              We source around authenticity, quality, customer fit and real market demand. That helps our partners
+              We build around authenticity, quality, customer fit and real market demand. That helps our partners
               stock with more confidence and serve their own customers better.
             </p>
 

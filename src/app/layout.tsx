@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: "Zanic Cosmetics",
     template: "%s · Zanic Cosmetics",
   },
-  description: "Zanic Cosmetics Ltd — Quality Skincare Products, Delivered with Excellence.",
+  description: "Zanic Cosmetics Ltd supplies genuine skincare and beauty products to retailers, resellers, professionals and individual customers across Nigeria.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -10,9 +10,9 @@ const FEATURES = [
 ];
 
 const IMAGE_FEATURES = [
-  { image: "/images/authenticity.png", title: "Authenticity", credit: "Responsible sourcing" },
-  { image: "/images/wholesale-partner.png", title: "Wholesale partnership", credit: "Built for business growth" },
-  { image: "/images/distribution.png", title: "Dependable supply", credit: "Nigeria-wide delivery" },
+  { image: "/products/studio/la-roche-posay-cleanser.png", title: "Authenticity", credit: "Responsible sourcing" },
+  { image: "/products/studio/skin-success-body-lotion.png", title: "Wholesale partnership", credit: "Built for business growth" },
+  { image: "/products/studio/anua-moisturizing-milk.png", title: "Dependable supply", credit: "Nigeria-wide delivery" },
 ];
 
 export function IntroFeatures() {
@@ -22,9 +22,9 @@ export function IntroFeatures() {
         <Reveal className="grid gap-6 lg:grid-cols-12">
           <p className="text-sm text-ink-faint lg:col-span-3">02</p>
           <p className="text-xl leading-snug text-ink sm:text-2xl lg:col-span-9 lg:text-3xl">
-            Zanic makes quality skincare easier to access for retailers, resellers, beauty professionals and individual buyers.{" "}
+            Zanic Cosmetics is a Nigerian skincare wholesale, supply, distribution and retail company.{" "}
             <span className="text-ink-muted">
-              We source responsibly, price competitively and build the dependable supply relationships that growing businesses need.
+              We make quality skincare products accessible while helping retailers, resellers, beauty professionals and individual buyers make confident choices.
             </span>
           </p>
         </Reveal>

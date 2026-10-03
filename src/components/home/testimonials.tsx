@@ -6,13 +6,13 @@ import { useGSAP } from "@gsap/react";
 import { StarIcon, CaretLeftIcon, CaretRightIcon, QuotesIcon } from "@phosphor-icons/react";
 import { Container } from "@/components/site/container";
 import { Reveal } from "@/components/motion/reveal";
-import { TESTIMONIALS } from "@/lib/products";
+import { TRUST_POINTS } from "@/lib/products";
 import { gsap } from "@/lib/gsap";
 
 export function Testimonials() {
   const [index, setIndex] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
-  const testimonial = TESTIMONIALS[index];
+  const testimonial = TRUST_POINTS[index];
 
   useGSAP(
     () => {
@@ -27,14 +27,14 @@ export function Testimonials() {
   );
 
   const go = (dir: 1 | -1) => {
-    setIndex((i) => (i + dir + TESTIMONIALS.length) % TESTIMONIALS.length);
+    setIndex((i) => (i + dir + TRUST_POINTS.length) % TRUST_POINTS.length);
   };
 
   return (
     <section className="py-16 sm:py-24">
       <Container>
         <Reveal as="div" className="text-center">
-          <h2 className="mx-auto max-w-2xl text-h1">Trusted By Our Happy And Loyal Customers</h2>
+          <h2 className="mx-auto max-w-2xl text-h1">What Zanic stands for</h2>
         </Reveal>
 
         <Reveal className="mt-12">
@@ -82,7 +82,7 @@ export function Testimonials() {
                 </button>
               </div>
               <p className="text-sm text-ink-faint">
-                Slide {index + 1} of {TESTIMONIALS.length}
+                Point {index + 1} of {TRUST_POINTS.length}
               </p>
             </div>
           </div>

@@ -28,8 +28,8 @@ export function ArrowButton({
       <span
         className={cn(
           "rounded-(--radius-button) px-4 py-2 text-sm font-light transition-colors",
-          solid && !dark && "bg-ink text-cream group-hover:bg-ink/85",
-          solid && dark && "bg-gold text-ink group-hover:bg-gold-soft",
+          solid && !dark && "bg-ink text-bg group-hover:bg-ink/85",
+          solid && dark && "bg-lime text-ink group-hover:bg-lime-soft",
           !solid && !dark && "border border-line text-ink group-hover:border-ink",
           !solid && dark && "border border-on-dark/30 text-on-dark group-hover:border-on-dark",
         )}
@@ -39,9 +39,9 @@ export function ArrowButton({
       <span
         className={cn(
           "flex size-9 shrink-0 items-center justify-center rounded-full border transition-colors",
-          solid && dark && "border-gold text-gold group-hover:bg-gold group-hover:text-ink",
+          solid && dark && "border-lime text-lime-deep group-hover:bg-lime group-hover:text-ink",
           !solid && dark && "border-on-dark/30 text-on-dark group-hover:bg-on-dark group-hover:text-ink",
-          !dark && "border-line text-ink group-hover:bg-ink group-hover:text-cream",
+          !dark && "border-line text-ink group-hover:bg-ink group-hover:text-bg",
         )}
       >
         <ArrowRightIcon className="size-4" weight="light" />

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ListIcon, MoonIcon, ShoppingBagIcon, SunIcon, XIcon } from "@phosphor-icons/react/ssr";
+import { ListIcon, MoonIcon, SunIcon, XIcon } from "@phosphor-icons/react/ssr";
 import { Container } from "@/components/site/container";
 import { cn } from "@/lib/utils";
 
@@ -16,20 +16,7 @@ const NAV_LINKS = [
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
   const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      setCartCount(Number(window.localStorage.getItem("zanic-cart-count") ?? "0"));
-    });
-    const updateCart = (event: Event) => setCartCount((event as CustomEvent<number>).detail);
-    window.addEventListener("zanic-cart-change", updateCart);
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("zanic-cart-change", updateCart);
-    };
-  }, []);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -68,8 +55,7 @@ export function Header() {
       <Container className="flex items-center justify-between gap-4 py-6">
         <Link href="/" aria-label="Zanic Cosmetics — Home" className="flex items-center gap-3">
           <span className="relative block size-14 shrink-0 overflow-hidden rounded-full sm:size-16">
-            <Image src="/brand/logo-light.jpeg" alt="" fill sizes="64px" className="theme-logo-on-light object-cover" />
-            <Image src="/brand/logo-dark.jpeg" alt="" fill sizes="64px" className="theme-logo-on-dark object-cover" />
+            <Image src="/brand/logo-dark.jpeg" alt="" fill sizes="64px" className="object-cover" />
           </span>
           <span className="text-lg font-semibold uppercase tracking-[0.14em] text-ink">Zanic</span>
           <span className="hidden text-sm text-ink-muted sm:ml-3 sm:block">Lagos, Nigeria</span>
@@ -96,16 +82,14 @@ export function Header() {
           >
             {theme === "light" ? <MoonIcon className="size-4" /> : <SunIcon className="size-4" />}
           </button>
-          <Link
-            href="/#products"
-            aria-label={`Cart, ${cartCount} items`}
-            className="relative flex size-10 items-center justify-center rounded-full transition-colors hover:bg-muted"
+          <a
+            href="https://wa.me/2349054593563"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden rounded-(--radius-pill) bg-ink px-4 py-2 text-sm font-semibold text-bg transition-transform duration-300 hover:-translate-y-0.5 sm:inline-flex"
           >
-            <ShoppingBagIcon className="size-5 text-ink" />
-            <span className="absolute -right-0.5 -top-0.5 flex size-4 items-center justify-center rounded-full bg-ink text-[10px] font-medium text-on-dark">
-              {cartCount}
-            </span>
-          </Link>
+            Talk to Zanic
+          </a>
           <button
             type="button"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
