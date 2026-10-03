@@ -32,12 +32,16 @@ export function CatalogSection() {
   return (
     <section id="products" className="py-16 sm:py-24">
       <Container>
-        <Reveal className="grid gap-6 border-b border-line pb-10 lg:grid-cols-12">
-          <p className="text-sm uppercase tracking-[0.18em] text-ink-faint lg:col-span-3">Product range</p>
-          <div className="lg:col-span-9">
-            <h2 className="text-h1">Real products, selected for real shelves</h2>
+        <Reveal className="flex flex-col gap-3">
+          <p className="text-sm uppercase tracking-[0.18em] text-ink-faint">Product range</p>
+          <div>
+            <h2 className="text-h1">
+              Skincare supply that
+              <br />
+              helps businesses grow
+            </h2>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted">
-              Explore products from our current image library. Contact the team for verified availability, wholesale quantities and current pricing.
+              Genuine skincare and wellness products for retailers, resellers, salons, spas and everyday routines. Contact Zanic for verified availability, wholesale quantities and current pricing.
             </p>
           </div>
         </Reveal>
@@ -91,7 +95,7 @@ export function CatalogSection() {
               ))}
             </div>
             <p className="mt-4 text-sm leading-relaxed text-ink-muted">
-              Looking for case quantities or a wider assortment? Request the current wholesale catalogue from our team.
+              Need larger quantities or a wider assortment? Speak with our team about availability, competitive pricing and delivery options.
             </p>
             <a href="https://wa.me/2349054593563" className="mt-5 inline-flex rounded-(--radius-pill) bg-lime px-5 py-3 text-sm font-semibold text-black transition-transform duration-300 hover:-translate-y-0.5">
               Request wholesale pricing

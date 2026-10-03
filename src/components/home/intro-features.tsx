@@ -20,11 +20,11 @@ export function IntroFeatures() {
     <section id="about" className="py-16 sm:py-24">
       <Container>
         <Reveal className="grid gap-6 lg:grid-cols-12">
-          <p className="text-sm text-ink-faint lg:col-span-3">02</p>
+          <p className="text-7xl font-light leading-none tracking-[-0.05em] text-ink-faint sm:text-8xl lg:col-span-3">02</p>
           <p className="text-xl leading-snug text-ink sm:text-2xl lg:col-span-9 lg:text-3xl">
             Zanic Cosmetics is a Nigerian skincare wholesale, supply, distribution and retail company.{" "}
             <span className="text-ink-muted">
-              We make quality skincare products accessible while helping retailers, resellers, beauty professionals and individual buyers make confident choices.
+              We make genuine, quality and competitively priced products accessible, with the information and dependable service customers need to choose with confidence.
             </span>
           </p>
         </Reveal>
@@ -41,7 +41,7 @@ export function IntroFeatures() {
             ))}
           </ul>
 
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:col-span-9">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-4 lg:col-span-9">
             {IMAGE_FEATURES.map(({ image, title, credit }) => (
               <div key={title}>
                 <div className="relative aspect-[4/5] overflow-hidden rounded-(--radius-card)">

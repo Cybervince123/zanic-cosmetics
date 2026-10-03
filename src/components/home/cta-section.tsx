@@ -15,15 +15,17 @@ export function CtaSection() {
             className="photo-grade object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
-          <div className="absolute inset-x-6 bottom-6 mx-auto max-w-lg text-center sm:inset-x-10 sm:bottom-10">
+          <div className="absolute inset-x-0 inset-y-0 grid place-content-center mx-auto max-w-lg text-center">
             <h2 className="text-h1 text-white">Ready to stock smarter?</h2>
             <p className="mt-3 text-sm leading-relaxed text-white/85 sm:text-base">
               Tell us what you need. We will help with current availability, competitive bulk pricing and delivery
               options across Nigeria.
             </p>
-            <PillButton href="https://wa.me/2349054593563" className="mt-6">
-              Talk to Zanic
-            </PillButton>
+            <div>
+              <PillButton href="https://wa.me/2349054593563" className="mt-6">
+                Talk to Zanic
+              </PillButton>
+            </div>
           </div>
         </Reveal>
       </Container>

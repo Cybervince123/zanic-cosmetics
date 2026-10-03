@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { StarIcon, CaretLeftIcon, CaretRightIcon, QuotesIcon } from "@phosphor-icons/react";
@@ -13,6 +13,14 @@ export function Testimonials() {
   const [index, setIndex] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
   const testimonial = TRUST_POINTS[index];
+
+  useEffect(() => {
+    if (TRUST_POINTS.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => {
+      setIndex((i) => (i + 1) % TRUST_POINTS.length);
+    }, 5000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   useGSAP(
     () => {
@@ -41,7 +49,7 @@ export function Testimonials() {
           <div ref={contentRef} className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
           <div className="order-2 lg:order-1">
             <div data-testimonial-piece className="flex items-center gap-4 text-sm text-ink-faint">
-              <span>0{index + 1}</span>
+              <span className="text-5xl font-light leading-none tracking-[-0.04em]">0{index + 1}</span>
               <span className="flex items-center gap-1 text-ink">
                 {testimonial.rating.toFixed(1)}
                 {Array.from({ length: 5 }).map((_, i) => (

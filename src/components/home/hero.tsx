@@ -11,8 +11,8 @@ export function Hero() {
         <Reveal trigger="mount">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-(--radius-card) sm:aspect-[16/9]">
             <ParallaxImage
-              src="/images/stock-hero-v3.jpg"
-              alt="Nigerian beauty-business owner holding a curated skincare selection"
+              src="/images/stock-hero-pexels-36524789.jpg"
+              alt="Three women presenting beauty products"
               sizes="100vw"
               preload
               className="photo-grade object-cover"
@@ -20,18 +20,18 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/25 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
 
-            <div className="absolute left-6 top-6 max-w-[220px] text-left sm:left-10 sm:top-10 sm:max-w-xs">
+            <div className="absolute right-6 top-6 max-w-[260px] text-right sm:right-10 sm:top-10 sm:max-w-xs">
               <p className="text-xs leading-relaxed text-white/90 sm:text-sm">
                 Genuine skincare, dependable supply and a team that takes your growth seriously.
               </p>
-              <div className="mt-4 flex items-center justify-start gap-2">
+              <div className="mt-4 flex flex-col items-end gap-1 sm:flex-row sm:items-center sm:justify-end sm:gap-2">
                 <span className="text-sm font-medium text-white">Nigeria-wide</span>
-                <span className="h-px w-6 bg-white/50" />
+                <span className="hidden h-px w-6 bg-white/50 sm:block" />
                 <span className="text-xs uppercase tracking-[0.18em] text-white/75">Wholesale + retail</span>
               </div>
             </div>
 
-            <h1 className="absolute inset-x-6 bottom-6 text-left text-3xl font-medium uppercase leading-[1.05] tracking-tight text-white sm:inset-x-10 sm:bottom-10 sm:text-5xl lg:text-6xl">
+            <h1 className="absolute bottom-6 left-6 max-w-[80%] text-left text-4xl font-medium leading-[1.02] tracking-tight text-white sm:bottom-10 sm:left-10 sm:text-6xl lg:text-7xl">
               Quality skincare
               <br />
               delivered with
@@ -51,7 +51,7 @@ export function Hero() {
               />
               <ArrowBadge className="absolute right-2 top-2" />
             </div>
-            <p className="px-3 py-3 text-xs font-medium text-ink sm:text-sm">Selected for quality and demand</p>
+            <p className="px-3 py-3 text-xs font-medium text-ink sm:text-sm">Selected for quality, authenticity and demand</p>
           </div>
         </Reveal>
       </Container>

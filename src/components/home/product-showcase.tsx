@@ -20,7 +20,7 @@ export function ProductShowcase() {
           <Reveal className="relative min-w-0 aspect-[4/5] overflow-hidden rounded-(--radius-card)">
             <Image
               src="/products/studio/skin-auras-ceramide-body-lotion.png"
-              alt="Skin Auras body lotion from the current Zanic product library"
+              alt="Skin Auras body lotion from the Zanic product range"
               fill
               sizes="(min-width: 1024px) 560px, 90vw"
               className="photo-grade object-cover"
@@ -30,16 +30,16 @@ export function ProductShowcase() {
             <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
               <p className="text-lg font-medium text-white sm:text-xl">Built for beauty businesses</p>
               <p className="mt-1 max-w-xs text-sm leading-relaxed text-white/80">
-                Wholesale pricing, practical product information and reliable availability for retailers and resellers.
+                Competitive pricing, clear product information and dependable supply for retailers and resellers.
               </p>
             </div>
           </Reveal>
 
           <Reveal className="min-w-0">
-            <h2 className="text-h1">A supply partner, not another cosmetics shop</h2>
+            <h2 className="text-h1">A supply partner built around your growth</h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-muted sm:text-base">
-              We build around authenticity, quality, customer fit and real market demand. That helps our partners
-              stock with more confidence and serve their own customers better.
+              We combine authenticity, product knowledge, competitive pricing and reliable fulfilment so our partners
+              can stock with confidence, serve customers better and grow profitably.
             </p>
 
             <div className="mt-6 flex gap-2">

@@ -8,7 +8,7 @@ export function Faq() {
     <section className="py-16 sm:py-24">
       <Container>
         <Reveal as="div" className="text-center">
-          <h2 className="mx-auto max-w-xl text-h1">Questions before you stock?</h2>
+          <h2 className="mx-auto max-w-xl text-h1">Questions before you order?</h2>
         </Reveal>
 
         <Reveal className="mx-auto mt-12 max-w-3xl">
