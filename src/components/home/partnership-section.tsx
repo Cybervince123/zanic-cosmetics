@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ArrowUpRightIcon, CheckIcon } from "@phosphor-icons/react/ssr";
 import { Container } from "@/components/site/container";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -8,13 +7,6 @@ const VALUE_PROPS = [
   { title: "Competitive pricing", description: "Wholesale pricing designed to help retailers and resellers stay competitive." },
   { title: "Reliable supply", description: "A dependable supply approach that helps you plan stock and serve customers consistently." },
   { title: "Business partnership", description: "Product information, responsive communication and support built around your growth." },
-];
-
-const STEPS = [
-  { number: "01", title: "Tell us what you need", description: "Share the products, quantities and delivery destination you have in mind." },
-  { number: "02", title: "Confirm the details", description: "We respond with current availability, competitive pricing and delivery options." },
-  { number: "03", title: "Choose your quantities", description: "Build an order that fits your shelves, customers and business plans." },
-  { number: "04", title: "Keep growing", description: "Stay connected for product information, updates and future supply needs." },
 ];
 
 export function PartnershipSection() {
@@ -32,8 +24,8 @@ export function PartnershipSection() {
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
           <Reveal className="relative overflow-hidden rounded-(--radius-card) bg-dark">
             <Image
-              src="/images/stock-hero-pexels-36524789.jpg"
-              alt="Three women presenting beauty products"
+              src="/images/partner-zanic.jpg"
+              alt="Woman applying skincare to her face"
               fill
               sizes="(min-width: 1024px) 42vw, 100vw"
               className="photo-grade object-cover"

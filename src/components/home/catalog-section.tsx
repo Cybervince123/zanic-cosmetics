@@ -6,7 +6,12 @@ import { useGSAP } from "@gsap/react";
 import { Container } from "@/components/site/container";
 import { ProductCard } from "@/components/home/product-card";
 import { Reveal } from "@/components/motion/reveal";
-import { CATEGORIES, CATEGORY_DETAILS, PRODUCTS, type Category } from "@/lib/products";
+import {
+  CATEGORIES,
+  CATEGORY_DETAILS,
+  PRODUCTS,
+  type Category,
+} from "@/lib/products";
 import { gsap } from "@/lib/gsap";
 import { cn } from "@/lib/utils";
 
@@ -14,12 +19,17 @@ export function CatalogSection() {
   const [category, setCategory] = useState<Category>(CATEGORIES[0]);
   const contentRef = useRef<HTMLDivElement>(null);
   const detail = CATEGORY_DETAILS[category];
-  const visibleProducts = PRODUCTS.filter((product) => product.category === category);
-  const useCompactCards = category === "Body Care" || category === "Wellness";
+  const visibleProducts = PRODUCTS.filter(
+    (product) => product.category === category,
+  );
 
   useGSAP(
     () => {
-      if (!contentRef.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (
+        !contentRef.current ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      )
+        return;
       gsap.fromTo(
         contentRef.current.querySelectorAll("[data-category-content]"),
         { opacity: 0, y: 18 },
@@ -33,7 +43,9 @@ export function CatalogSection() {
     <section id="products" className="py-16 sm:py-24">
       <Container>
         <Reveal className="flex flex-col gap-3">
-          <p className="text-sm uppercase tracking-[0.18em] text-ink-faint">Product range</p>
+          <p className="text-sm uppercase tracking-[0.18em] text-ink-faint">
+            Product range
+          </p>
           <div>
             <h2 className="text-h1">
               Skincare supply that
@@ -41,12 +53,18 @@ export function CatalogSection() {
               helps businesses grow
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted">
-              Genuine skincare and wellness products for retailers, resellers, salons, spas and everyday routines. Contact Zanic for verified availability, wholesale quantities and current pricing.
+              Genuine skincare and wellness products for retailers, resellers,
+              salons, spas and everyday routines. Contact Zanic for verified
+              availability, wholesale quantities and current pricing.
             </p>
           </div>
         </Reveal>
 
-        <div className="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter products by category">
+        <div
+          className="mt-8 flex flex-wrap gap-2"
+          role="group"
+          aria-label="Filter products by category"
+        >
           {CATEGORIES.map((item) => (
             <button
               key={item}
@@ -65,41 +83,58 @@ export function CatalogSection() {
           ))}
         </div>
 
-        <div ref={contentRef} className="mt-8 grid gap-5 lg:grid-cols-12">
+        <div ref={contentRef} className="mt-8">
           <div
             data-category-content
-            className={cn(
-              "relative min-h-[420px] overflow-hidden rounded-(--radius-card) bg-dark lg:col-span-7",
-            )}
+            className="relative grid overflow-hidden rounded-(--radius-card) min-h-[500px] bg-dark lg:grid-cols-[minmax(0,1fr)_minmax(320px,42%)]"
           >
             <Image
               key={detail.image}
               src={detail.image}
               alt={detail.title}
               fill
-              sizes="(min-width: 1024px) 58vw, 100vw"
-              className="photo-grade object-cover"
+              className="absolute top-0 left-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
-            <div className="absolute inset-x-6 bottom-6 sm:inset-x-8 sm:bottom-8">
-              <p className="text-xs uppercase tracking-[0.18em] text-lime">{detail.eyebrow}</p>
-              <h3 className="mt-3 max-w-md text-3xl text-white sm:text-4xl">{detail.title}</h3>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">{detail.description}</p>
+            <div className="absolute top-0 left-0 flex flex-col justify-end p-10 bg-black/20 w-full h-full">
+              <p className="text-xs uppercase tracking-[0.18em] text-lime">
+                {detail.eyebrow}
+              </p>
+
+              <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
+                <h3 className="max-w-md text-3xl text-white sm:text-4xl">
+                  {detail.title}
+                </h3>
+                <span className="rounded-(--radius-pill) bg-white/15 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
+                  {visibleProducts.length}{" "}
+                  {visibleProducts.length === 1 ? "product" : "products"}
+                </span>
+              </div>
+
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-white/70">
+                {detail.description}
+              </p>
             </div>
           </div>
 
-          <div data-category-content className="lg:col-span-5">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+          <div data-category-content className="mt-8">
+            <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 xl:grid-cols-4">
               {visibleProducts.map((product) => (
-                <ProductCard key={product.slug} product={product} compact={useCompactCards} />
+                <ProductCard key={product.slug} product={product} />
               ))}
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-ink-muted">
-              Need larger quantities or a wider assortment? Speak with our team about availability, competitive pricing and delivery options.
-            </p>
-            <a href="https://wa.me/2349054593563" className="mt-5 inline-flex rounded-(--radius-pill) bg-lime px-5 py-3 text-sm font-semibold text-black transition-transform duration-300 hover:-translate-y-0.5">
-              Request wholesale pricing
-            </a>
+            <div className="mt-8 flex flex-col gap-4 rounded-(--radius-card) bg-surface-muted p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+              <p className="max-w-xl text-sm leading-relaxed text-ink">
+                Need larger quantities or a wider assortment? Speak with our
+                team about availability, competitive pricing and delivery
+                options.
+              </p>
+              <a
+                href="https://wa.me/2349054593563"
+                className="inline-flex shrink-0 rounded-(--radius-pill) bg-lime px-5 py-3 text-sm font-semibold text-black transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                Request wholesale pricing
+              </a>
+            </div>
           </div>
         </div>
       </Container>

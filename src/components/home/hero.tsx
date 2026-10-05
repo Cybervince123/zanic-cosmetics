@@ -9,10 +9,10 @@ export function Hero() {
     <section className="pb-8 pt-8 sm:pt-10">
       <Container>
         <Reveal trigger="mount">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-(--radius-card) sm:aspect-[16/9]">
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-(--radius-card) sm:aspect-[4/5] lg:aspect-[16/9]">
             <ParallaxImage
-              src="/images/stock-hero-pexels-36524789.jpg"
-              alt="Three women presenting beauty products"
+              src="/images/stock-hero-pexels-20104821.jpg"
+              alt="Three women with eyes closed in a skincare portrait"
               sizes="100vw"
               preload
               className="photo-grade object-cover"

@@ -54,7 +54,7 @@ export function Header() {
   return (
     <header className="relative z-50 bg-bg">
       <Container className="flex items-center justify-between gap-4 py-6">
-        <Link href="/" aria-label="Zanic Cosmetics — Home" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <span className="relative block size-14 shrink-0 overflow-hidden rounded-full sm:size-16">
             <Image src="/brand/logo-dark.jpeg" alt="" fill sizes="64px" className="object-cover" />
           </span>
