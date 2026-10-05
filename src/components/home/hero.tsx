@@ -1,20 +1,20 @@
 import Image from "next/image";
 import { Container } from "@/components/site/container";
 import { ArrowBadge } from "@/components/ui/arrow-badge";
-import { Reveal } from "@/components/motion/reveal";
 import { ParallaxImage } from "@/components/motion/parallax-image";
 
 export function Hero() {
   return (
     <section className="pb-8 pt-8 sm:pt-10">
       <Container>
-        <Reveal trigger="mount">
+        <div>
           <div className="relative aspect-[3/4] w-full overflow-hidden rounded-(--radius-card) sm:aspect-[4/5] lg:aspect-[16/9]">
             <ParallaxImage
               src="/images/stock-hero-pexels-20104821.jpg"
               alt="Three women with eyes closed in a skincare portrait"
               sizes="100vw"
               preload
+              fetchPriority="high"
               className="photo-grade object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/25 to-transparent" />
@@ -53,7 +53,7 @@ export function Hero() {
             </div>
             <p className="px-3 py-3 text-xs font-medium text-ink sm:text-sm">Selected for quality, authenticity and demand</p>
           </div>
-        </Reveal>
+        </div>
       </Container>
     </section>
   );

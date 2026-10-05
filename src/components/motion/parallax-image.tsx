@@ -10,10 +10,18 @@ interface ParallaxImageProps {
   alt: string;
   sizes: string;
   preload?: boolean;
+  fetchPriority?: "high" | "low" | "auto";
   className?: string;
 }
 
-export function ParallaxImage({ src, alt, sizes, preload = false, className }: ParallaxImageProps) {
+export function ParallaxImage({
+  src,
+  alt,
+  sizes,
+  preload = false,
+  fetchPriority,
+  className,
+}: ParallaxImageProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -36,7 +44,15 @@ export function ParallaxImage({ src, alt, sizes, preload = false, className }: P
 
   return (
     <div ref={ref} className="absolute inset-0 overflow-hidden">
-      <Image src={src} alt={alt} fill sizes={sizes} preload={preload} className={className} />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        preload={preload}
+        fetchPriority={fetchPriority}
+        className={className}
+      />
     </div>
   );
 }
